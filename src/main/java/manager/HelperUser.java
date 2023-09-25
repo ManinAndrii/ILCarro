@@ -4,6 +4,7 @@ import models.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Rectangle;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -42,11 +43,18 @@ public interface HelperUser extends HelperBase{
      //   JavascriptExecutor js = (JavascriptExecutor)wd;
       //  js.executeScript("document.querySelector('#terms-of-use').click();");
         // variant 3
-        Rectangle rect = wd.findElement(By.cssSelector("label[for='terms-of-use']")).getRect();
-        int x = rect.getX() + rect.getWidth() /2;
-        int y = rect.getY() + rect.getHeight() / 2;
+      //  Rectangle rect = wd.findElement(By.cssSelector("label[for='terms-of-use']")).getRect();
+       // int x = rect.getX() + rect.getWidth() * 2/8;
+      //  int y = rect.getY() + rect.getHeight() / 2;
+      //  Actions actions = new Actions(wd);
+      //  actions.moveByOffset(x, y).click().perform();
+      //  wd.switchTo().activeElement().sendKeys();
+        WebElement element = wd.findElement(By.cssSelector("label[for='terms-of-use']"));
         Actions actions = new Actions(wd);
-        actions.moveByOffset(x, y).click().perform();
+        // actions.moveByOffset(x, y).click().perform();
+        // wd.switchTo().activeElement().sendKeys(text);
+        actions.moveToElement(element).click().perform();
+
         }
 
 
@@ -80,12 +88,6 @@ public interface HelperUser extends HelperBase{
         submitLogin();
         clickOkButton();
     }
-    default void clickCheckBox(String text){
-        Rectangle rect = wd.findElement(By.id("terms-of-use")).getRect();
-        int x = rect.getX() + rect.getWidth() * 7 / 8;
-        int y = rect.getY() + rect.getHeight() / 2;
-        Actions actions = new Actions(wd);
-        actions.moveByOffset(x, y).click().perform();
+
     }
 
-}

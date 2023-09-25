@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
@@ -13,7 +15,11 @@ import org.testng.annotations.BeforeSuite;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.slf4j.LoggerFactory.getLogger;
+
 public class TestBase implements HelperUser, HelperCar {
+
+    Logger logger = getLogger(TestBase.class);
 
     WebDriver wd;
 
@@ -35,6 +41,9 @@ public class TestBase implements HelperUser, HelperCar {
     public void stop(){
         pause(5000);
         tearDown();
+    }
+
+
     }
 
 //
@@ -86,4 +95,3 @@ public class TestBase implements HelperUser, HelperCar {
 //    }
 
 
-}

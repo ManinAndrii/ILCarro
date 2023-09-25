@@ -20,6 +20,7 @@ public class RegistrationTests extends TestBase {
         openRegistrationForm();
         fillRegistrationForm(user);
         submitRegistration();
+        logger.info("RegistrationPositive -->"+user.getName()+" "+user.getLastName()+" & "+user.getEmail()+" & "+user.getPassword());
         Assert.assertTrue(isLoggedSuccess());
     }
 
@@ -35,9 +36,6 @@ public class RegistrationTests extends TestBase {
 
         openRegistrationForm();
         fillRegistrationForm(user);
-
-
-
 
 
     }
