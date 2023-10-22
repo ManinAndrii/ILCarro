@@ -19,6 +19,15 @@ public class LoginTests extends TestBase{
         fillLoginForm("skrydj1984@mail.com", "Ll12345$");
         submitLogin();
         Assert.assertTrue(isLoggedSuccess());
+
+    }
+
+    public void loginPositiveTestProperties(){
+        openLoginForm();
+        fillLoginForm(getEmail(), getPassword());
+        submitLogin();
+        Assert.assertTrue(isLoggedSuccess());
+
     }
     @Test
     public void loginPositiveTestModel(){
@@ -28,8 +37,8 @@ public class LoginTests extends TestBase{
         openLoginForm();
         fillLoginForm(user.getEmail(), user.getPassword());
         submitLogin();
-        logger.info("LoginPositiveTestModel -->" + user.getEmail() + " & " + user.getPassword());
         assertTrue(isLoggedSuccess());
+        logger.info("LoginPositiveTestModel -->" + user.getEmail() + " & " + user.getPassword());
     }
 
     @AfterMethod

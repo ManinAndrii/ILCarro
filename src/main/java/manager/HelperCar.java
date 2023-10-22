@@ -13,8 +13,9 @@ public interface HelperCar extends HelperBase {
 
 
     default void openCarForm() {
-        pause(5000);
-        click(By.xpath("//a[.=' Let the car work ']"));
+        pause(3000);
+       click(By.xpath("//a[.=' Let the car work ']"));
+
     }
 
     default void fillCarForm(Car car) {
@@ -60,9 +61,8 @@ public interface HelperCar extends HelperBase {
         }
 
         default void select(By locator, String option){
-             new Select(locator.findElement(wd)).selectByValue(option);
+             new Select(wd.findElement(locator)).selectByValue(option);
 
         }
-
 
     }

@@ -5,7 +5,10 @@ import org.testng.annotations.Test;
 
 public class RegistrationTests extends TestBase {
 
-
+    @BeforeMethod
+    public void precondition(){
+        if(isLogged()) logout();
+    }
     @Test
     public void registrationPositive() {
         int i = (int) (System.currentTimeMillis() / 1000) % 3600;
@@ -20,7 +23,7 @@ public class RegistrationTests extends TestBase {
         openRegistrationForm();
         fillRegistrationForm(user);
         submitRegistration();
-        logger.info("RegistrationPositive -->"+user.getName()+" "+user.getLastName()+" & "+user.getEmail()+" & "+user.getPassword());
+        logger.info("RegistrationPositive -->"+user.getName()+" "+user.getLastName()+" , "+user.getEmail()+" , "+user.getPassword());
         Assert.assertTrue(isLoggedSuccess());
     }
 
@@ -36,6 +39,7 @@ public class RegistrationTests extends TestBase {
 
         openRegistrationForm();
         fillRegistrationForm(user);
+        logger.info("RegistrationNegativeWrongName -->"+user.getName()+" "+user.getLastName()+" , "+user.getEmail()+" , "+user.getPassword());
 
 
     }
@@ -51,6 +55,7 @@ public class RegistrationTests extends TestBase {
 
         openRegistrationForm();
         fillRegistrationForm(user);
+        logger.info("RegistrationNegativeWrongLastName -->"+user.getName()+" "+user.getLastName()+" , "+user.getEmail()+" , "+user.getPassword());
 
 
     }
@@ -66,6 +71,7 @@ public class RegistrationTests extends TestBase {
 
         openRegistrationForm();
         fillRegistrationForm(user);
+        logger.info("RegistrationNegativeWrongEmail -->"+user.getName()+" "+user.getLastName()+" , "+user.getEmail()+" , "+user.getPassword());
 
 
     }
@@ -81,6 +87,7 @@ public class RegistrationTests extends TestBase {
 
         openRegistrationForm();
         fillRegistrationForm(user);
+        logger.info("RegistrationNegativeWrongPassword -->"+user.getName()+" "+user.getLastName()+" , "+user.getEmail()+" , "+user.getPassword());
 
 
     }

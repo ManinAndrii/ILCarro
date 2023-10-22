@@ -10,12 +10,12 @@ public class AddNewCarTests extends TestBase {
         if(isLogged() == false){
             login(new User()
                     .withEmail("skrydj1984@mail.com")
-                    .withPassword("Li12345$")
+                    .withPassword("Ll12345$")
             );
         }
     }
 
-    @Test
+    @Test(invocationCount = 2)
     public void addNewCarPositive(){
 
         int i = (int)(System.currentTimeMillis()/1000)%3600;
@@ -35,7 +35,6 @@ public class AddNewCarTests extends TestBase {
 
         openCarForm();
         fillCarForm(car);
-        pause(5000);
 
     }
 

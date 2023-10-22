@@ -13,23 +13,34 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
 public class TestBase implements HelperUser, HelperCar {
 
-    Logger logger = getLogger(TestBase.class);
 
     WebDriver wd;
 
+    @BeforeMethod
+    public void startTest(Method method) {
+        logger.info("Starting test -->" + method.getName());
+    }
+
+    @AfterMethod
+    public void stopTest(Method method) {
+        logger.info("Finished test -->" + method.getName());
+        logger.info("========================================================================");
+    }
     @BeforeSuite
 //    public void init(){
 //        wd = new ChromeDriver();
 //        wd.navigate().to("https://ilcarro.web.app/search");
 //        wd.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
 //    }
-    public void setup(){
+    public void setup() throws IOException {
         init();
     }
 
